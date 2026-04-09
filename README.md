@@ -9,3 +9,7 @@ Our Submission for Computer Science 411, Mobile Development
 * 
 * 
 
+3 screen
+1. homepage
+2. search screen
+3. pokemon info(attacks,evo,etc)
