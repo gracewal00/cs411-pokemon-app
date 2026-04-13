@@ -6,7 +6,7 @@ Our Submission for Computer Science 411, Mobile Development
 * Rafael Mercado : rafaelmercado@csu.fullerton.edu 9094388160
 * Grace Walsh : grace.walsh@csu.fullerton.edu
 * Gilbert Cervantes: GilbertC23@csu.fullerton.edu
-* 
+* Philip Xie Zhen: huakeng@csu.fullerton.edu
 * 
 
 3 screen
