@@ -8,14 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var pokemon: [PokemonEntry] = []
+    @State private var isLoading = true
+    private let service = PokeAPIService()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            Group {
+                if isLoading {
+                    ProgressView("Loading Pokemon...")
+                } else {
+                    List(pokemon) { entry in
+                        HStack(spacing: 12) {
+                            AsyncImage(url: entry.imageURL) { image in
+                                image.resizable().scaledToFit()
+x                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 60, height: 60)
+
+                            VStack(alignment: .leading) {
+                                Text(entry.name.capitalized)
+                                    .font(.headline)
+                                Text("#\(entry.id)")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Pokedex")
         }
-        .padding()
+        .task {
+            do {
+                pokemon = try await service.fetchPokemonList()
+                isLoading = false
+            } catch {
+                isLoading = false
+                print("Failed to load: \(error)")
+            }
+        }
     }
 }
 
