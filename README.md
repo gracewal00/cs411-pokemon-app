@@ -7,7 +7,7 @@ Our Submission for Computer Science 411, Mobile Development
 * Grace Walsh : grace.walsh@csu.fullerton.edu
 * Gilbert Cervantes: GilbertC23@csu.fullerton.edu
 * Philip Xie Zhen: huakeng@csu.fullerton.edu
-* 
+* Brajan Memishi: brianmemishi@csu.fullerton.edu
 
 3 screen
 1. homepage
