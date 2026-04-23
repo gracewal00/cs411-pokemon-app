@@ -2,7 +2,6 @@
 //  PokemonInfoView.swift
 //  Pokemon-app
 //
-//  Created by Gilbert Cervantes
 //
 
 import SwiftUI
