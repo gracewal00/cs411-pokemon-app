@@ -8,12 +8,12 @@
 import SwiftUI
 
 @main
-struct Pokemon_appApp: App {
-    @State private var teamManager = TeamManager()
+struct PokemonAppApp: App {
+    var teamManager = TeamManager()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environment(teamManager)
         }
     }
