@@ -22,7 +22,7 @@ struct ContentView: View {
                         HStack(spacing: 12) {
                             AsyncImage(url: entry.imageURL) { image in
                                 image.resizable().scaledToFit()
-x                            } placeholder: {
+                            } placeholder: {
                                 ProgressView()
                             }
                             .frame(width: 60, height: 60)

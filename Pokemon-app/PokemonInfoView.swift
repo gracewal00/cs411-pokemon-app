@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PokemonInfoView: View {
     // This get's our global data variables/attributes so we can save Pokemon to it
-    @EnvironmentObject var teamManager: TeamManager
+    @Environment(TeamManager.self) var teamManager
 
     // The name of the Pokémon the user typed in
     let pokemonName: String
@@ -72,7 +72,7 @@ struct PokemonInfoView: View {
     // This function will allow us to scan through our NetworkManager and retrieves the actual running data
     func getPokemonData() async {
         do {
-            let data = try await NetworkManager().fetchPokemon(name: pokemonName)
+            let data = try await PokeAPIService().fetchPokemon(name: pokemonName)
             pokemon = data
             isLoading = false
         } catch {
