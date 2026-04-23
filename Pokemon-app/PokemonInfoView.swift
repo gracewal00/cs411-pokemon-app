@@ -44,13 +44,8 @@ struct PokemonInfoView: View {
 
                     // Try to get the nicer official artwork image first.
                     // If that doesn't exist for some reason, just use the regular sprite as a backup.
-                    var artworkURL: String? = pokemon.sprites.frontDefault
-                    if let officialArt = pokemon.sprites.other?.officialArtwork?.frontDefault {
-                        artworkURL = officialArt
-                    }
-
-                    // Load and show the image from the URL we picked above
-                    if let urlString = artworkURL, let url = URL(string: urlString) {
+                    // Load and show the image from whichever URL we found
+                    if let urlString = pickArtworkURL(for: pokemon), let url = URL(string: urlString) {
                         AsyncImage(url: url) { image in
                             image.resizable()
                                 .scaledToFit()
@@ -146,6 +141,15 @@ struct PokemonInfoView: View {
         .task {
             await getPokemonData()
         }
+    }
+
+    // Helper function to pick which image URL to use
+    // Try the nicer official artwork first, otherwise fall back to the regular sprite
+    func pickArtworkURL(for pokemon: PokemonDetail) -> String? {
+        if let officialArt = pokemon.sprites.other?.officialArtwork?.frontDefault {
+            return officialArt
+        }
+        return pokemon.sprites.frontDefault
     }
 
     // Helper function to pick a color for each Pokémon type
