@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Pokemon_appApp: App {
+    @State private var teamManager = TeamManager()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(teamManager)
         }
     }
 }
