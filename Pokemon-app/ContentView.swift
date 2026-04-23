@@ -19,20 +19,22 @@ struct ContentView: View {
                     ProgressView("Loading Pokemon...")
                 } else {
                     List(pokemon) { entry in
-                        HStack(spacing: 12) {
-                            AsyncImage(url: entry.imageURL) { image in
-                                image.resizable().scaledToFit()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 60, height: 60)
+                        NavigationLink(destination: PokemonInfoView(pokemonName: entry.name)) {
+                            HStack(spacing: 12) {
+                                AsyncImage(url: entry.imageURL) { image in
+                                    image.resizable().scaledToFit()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .frame(width: 60, height: 60)
 
-                            VStack(alignment: .leading) {
-                                Text(entry.name.capitalized)
-                                    .font(.headline)
-                                Text("#\(entry.id)")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
+                                VStack(alignment: .leading) {
+                                    Text(entry.name.capitalized)
+                                        .font(.headline)
+                                    Text("#\(entry.id)")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
+                                }
                             }
                         }
                     }
