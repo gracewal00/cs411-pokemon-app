@@ -8,8 +8,30 @@ struct TeamMember: Identifiable, Codable {
 
 @Observable
 class TeamManager {
-    var team: [TeamMember] = []
-
+    private let saveKey = "SavedTeam"
+    
+    var team: [TeamMember] = [] {
+        didSet {
+            save()
+        }
+    }
+    
+    init() {
+        if let data = UserDefaults.standard.data(forKey: saveKey) {
+            if let decoded = try? JSONDecoder().decode([TeamMember].self, from: data) {
+                team = decoded
+                return
+            }
+        }
+        team = []
+    }
+    
+    private func save() {
+        if let encoded = try? JSONEncoder().encode(team) {
+            UserDefaults.standard.set(encoded, forKey: saveKey)
+        }
+    }
+    
     func addToTeam(pokemon: TeamMember) {
         // Limit team to 6 Pokemon
         guard team.count < 6 else { return }
