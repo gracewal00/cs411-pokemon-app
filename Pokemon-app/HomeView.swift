@@ -51,7 +51,7 @@ struct HomeView: View {
                 NavigationLink {
                     ContentView()
                 } label: {
-                    Text("Go to Pokédex")
+                    Text("PocketDex")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -76,6 +76,7 @@ struct HomeView: View {
             }
             .padding()
             .navigationTitle("Home")
+            .background(.appBackground)
         }
     }
 }
