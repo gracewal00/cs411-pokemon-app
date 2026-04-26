@@ -71,7 +71,18 @@ struct HomeView: View {
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
-
+                
+                NavigationLink {
+                    SettingsView()
+                } label: {
+                    Text("Settings")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                }
                 Spacer()
             }
             .padding()
