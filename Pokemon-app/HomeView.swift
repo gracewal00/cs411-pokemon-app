@@ -39,7 +39,7 @@ struct HomeView: View {
                         .frame(width: 10, height: 10)
                 }
 
-                Text("Pokédex App")
+                Text("PocketDex")
                     .font(.largeTitle)
                     .fontWeight(.bold)
 
